@@ -7,9 +7,9 @@ app.use(bodyParser.json())
 
 var pool = mysql.createPool({
   host     : 'us-cdbr-iron-east-02.cleardb.net',
-  user     : 'b6a23cd7b9421f',
-  password : '31d83133',
-  database : 'heroku_f95961231da02cd'
+  user     : 'bb2251de9cb6fd',
+  password : 'ef506f45',
+  database : 'heroku_436672d0fc203f4'
 });
 
 app.get('/api/:id(\\d+)/info', function(req, res) {
