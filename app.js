@@ -11,7 +11,7 @@ var pool = mysql.createPool({
   password : 'ef506f45',
   database : 'heroku_436672d0fc203f4'
 });
-
+app.use(express.static(__dirname + '/public'));
 app.get('/api/:id(\\d+)/info', function(req, res) {
   var id = req.params.id;
   pool.getConnection(function(err, connection) {
