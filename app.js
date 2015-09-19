@@ -31,6 +31,25 @@ app.get('/api/:id(\\d+)/info', function(req, res) {
     });
   });
 });
+app.get('/api/table/info', function(req, res) {
+  var id = req.params.id;
+  pool.getConnection(function(err, connection) {
+    if (err){
+       res.status(400).send();
+       throw err
+    };
+    connection.query('SELECT * FROM credits WHERE id = ' + id , function(err, rows, fields) {
+      connection.release();
+      if (err){
+        res.status(400).send();
+        throw err
+      };
+
+      var data = {name: rows[0].name, currentFunds: rows[0].amount,password: rows[0].password};
+      res.status(200).json(data);
+    });
+  });
+});
 
 app.post('/api/:id(\\d+)/money', function(req, res) {
   var id = req.params.id;
