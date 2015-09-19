@@ -26,7 +26,7 @@ app.get('/api/:id(\\d+)/info', function(req, res) {
         throw err
       };
 
-      var data = {name: rows[0].name, currentFunds: rows[0].amount};
+      var data = {name: rows[0].name, currentFunds: rows[0].amount,password: rows[0].password};
       res.status(200).json(data);
     });
   });
